@@ -1,0 +1,147 @@
+.div1{
+    height: 30%;
+}
+.div2{
+    height: 70%;
+    
+}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    background-color: #e6e6e6;
+    
+}
+/*computer nav*/
+.firstnav span {
+    display: inline-block;
+    font-size: 14px;
+    margin: 6px 0px 8px 9px ;
+    font-weight: thin;
+
+}
+
+/*computer icon*/
+.computericon {
+    position: absolute;
+    top: 0px;
+    right: 52px;
+
+
+}
+
+/*close icon*/
+.computericon button {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.close {
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    font-weight: bold;
+}
+
+.computericon button img,
+.close {
+    padding: 9px 21px;
+}
+
+.close:hover {
+    background-color: #e80e27;
+    color: white;
+    font-weight: bold;
+}
+
+/*two other icon*/
+.restore:hover {
+    background-color: #cfcfcf;
+}
+
+.minus:hover {
+    background-color: #cfcfcf;
+}
+/*restor up icon*/
+.restoreup{
+    display: none;
+}
+.restoreup:hover{
+    background-color: #cfcfcf;
+}
+
+/*bar icon and standard paraghraph  */
+#btnbar {
+    background-color: #e6e6e6;
+}
+
+#btnbar img {
+    padding: 12px;
+}
+
+#btnbar img:hover {
+    background-color: #cfcfcf;
+}
+
+#btnbar + span {
+    margin-left: 10px;
+    display: inline;
+    font-size: 21px;
+    font-weight: 600;
+    position: absolute;
+    top: 40px;
+    
+}
+
+/*history icon */
+.history {
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 34px;
+    background-color: #e6e6e6;
+    padding: 9px;
+
+}
+
+.history:hover {
+    background-color: #cfcfcf;
+}
+
+/* minimize icon*/
+.minimize {
+    position: absolute;
+    top: 36px;
+    left: 155px;
+    background-color: #e6e6e6;
+    padding: 10px;
+}
+
+.minimize:hover {
+    background-color: #cfcfcf;
+}
+/*second nav*/
+.secondnav{
+    display: inline;
+}
+/*input */
+input {
+    background-color: #e6e6e6;
+    width: 100%;
+    display: inline-block;
+    font-size: 55px;
+    color: black;
+    height: 30%;
+    padding: 9px;
+    direction: rtl;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 9%;
+
+}
