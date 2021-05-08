@@ -13,7 +13,7 @@ body {
   padding: 0;
   background-color: rgb(235, 235, 235);
 }
-
+/* division style*/
 .division {
   height: 100%;
   display: grid;
@@ -130,7 +130,7 @@ ul {
   display: grid;
   grid-area: numbers;
   gap: 2px;
-
+/* define all oprations with grid */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
@@ -257,7 +257,7 @@ ul {
 .numbers .color_gray {
   background-color: #f3f3f3;
 }
-
+/* responsive the calculator to any size*/
 @media screen and (min-width: 501px) {
   .m {
     display: none !important;
@@ -314,5 +314,4 @@ ul {
   .history{
     display: none;
   }
-  
 }
