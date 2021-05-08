@@ -1,153 +1,139 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-html,body {
-    height: 100%;
-    }
+html,
 body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(235, 235, 235);
-
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(235, 235, 235);
 }
 
-.division{
-    height: 100%;
-    display: grid;
-    grid-template-columns:  80vw 20vw;
-    grid-template-rows: 30px   minmax(100,1fr)  7vh  minmax(200px,3fr)  ;
-    grid-template-areas: 
-    "head       head"
-    "first_row  right_side"
+.division {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 80vw 20vw;
+  grid-template-rows: 30px minmax(100px, 1fr) 7vh minmax(200px, 3fr);
+  grid-template-areas:
+    "head head"
+    "first_row right_side"
     "second_row right_side"
-    "numbers    right_side";
-    
+    "numbers right_side";
 }
-.head{
-    
-    grid-area: head;
-    display: inline;
+.head {
+  grid-area: head;
+  display: inline;
+}
+
+.calculator {
+  padding-left: 15px;
+  padding-top: 5px;
+}
+.bar {
+  float: right;
+  padding: 5px 10px;
+}
+.close:hover {
+  background-color: red;
+}
+.maximize:hover {
+  background-color: lightgray !important;
+}
+.minimize:hover {
+  background-color: lightgray !important;
+}
+
+.calculator {
+  float: left;
+}
+
+.first_row {
+  position: relative;
+  height: 100%;
+  grid-area: first_row;
+}
+.first_row .history_btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.first_row .history {
+  border: none;
+}
+.first_row .left_row {
+  display: flex;
+
+  padding: 10px;
+}
+.first_row .left_row div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+}
+.Standard {
+  font-size: 25px;
+  font-weight: 600;
+}
+.hoover:hover {
+  background-color: lightgray;
+}
+#input {
  
+  color: inherit;
+  cursor: text;
+  font-weight: 600;
+  color: black;
+  font-size: 70px;
+  margin-right: 20px;
+  float: right;
+  border: none;
+  text-decoration: rtl;
+  direction: rtl;
 }
+.second_row {
+  grid-area: second_row;
+  font-size: small;
 
-
-.calculator{
-    
-    padding-left: 15px;
-    padding-top: 5px;
+  display: flex;
 }
-.bar{
-    float: right;
-    padding: 5px 10px;
-    
+.second_row div {
+  cursor: context-menu;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
 }
-.close:hover{
-    background-color: red;
+.MC,
+.MR {
+  opacity: 0.5;
 }
-.maximize:hover{
-    background-color:lightgray !important;
+.second_row .m {
+  border: none;
 }
-.minimize:hover{
-    background-color:lightgray !important;
-
+ul {
+  display: flex;
+  flex-direction: row;
 }
-
-.calculator{
-    float: left;
-}
-
-.first_row{
-   
-    position: relative;
-    height: 100%;
-    grid-area: first_row ;
-    
-   
-}
-.first_row .history_btn{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    
-}
-.first_row .history{
-    border: none;
-}
-.first_row .left_row{
-    display: flex;
-    
-    padding: 10px;
-    
-
-}
-.first_row .left_row div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    padding: 5px;
-}
-.Standard{
-    font-size: 25px;
-    font-weight: 600;
-    
-    
-}
-.hoover:hover{
-    background-color: lightgray;
-}
-#input{
-    cursor: text;
-    font-weight:600;
-    color: black ;
-    font-size: 75px ;
-    margin-right: 20px;
-    float: right;
-    border: none;
-    text-decoration: rtl;
-    direction: rtl;
-}
-.second_row{
-    grid-area: second_row ;
-    font-size: small;
-    
-   
-    display: flex;
-   
-    
-    
-}
-.second_row div{
-    cursor: context-menu;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-}
-.MC,.MR{
-    opacity: 0.5;
-}
-.second_row .m{
-    border: none;
-}
-
-.second_row .mhover:hover{
-
-    background-color:lightgray !important;
+.second_row .mhover:hover {
+  background-color: lightgray !important;
 }
 .numbers {
-    height: 100%;
-    display: grid;
-    grid-area: numbers ;
-    gap: 2px;
-   
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(6,1fr);
-    grid-template-areas: 
+  height: 100%;
+  display: grid;
+  grid-area: numbers;
+  gap: 2px;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
     "percent CE C delete"
     "reverse power radical divide"
     "num_7 num_8 num_9 multiplication"
@@ -155,172 +141,178 @@ body {
     "num_1 num_2 num_3 plus"
     "plus_minus num_0 dot equal";
 }
-.percent{
-    grid-area: percent;
+.percent {
+  grid-area: percent;
 }
-
-.CE{
-    grid-area: CE;
+.CE {
+  grid-area: CE;
 }
-.C{
-    grid-area: C;
+.C {
+  grid-area: C;
 }
-.delete{
-    grid-area: delete;
+.delete {
+  grid-area: delete;
 }
-.divide{
-    grid-area: divide;
+.divide {
+  grid-area: divide;
 }
-.radical{
-    grid-area: radical;
+.radical {
+  grid-area: radical;
 }
-.num_7{
-    grid-area: num_7;
+.num_7 {
+  grid-area: num_7;
 }
-.num_8{
-    grid-area: num_8;
+.num_8 {
+  grid-area: num_8;
 }
-.num_9{
-    grid-area: num_9;
+.num_9 {
+  grid-area: num_9;
 }
-.multiplication{
-    grid-area: multiplication;
+.multiplication {
+  grid-area: multiplication;
 }
-.power{
-    grid-area: power;
+.power {
+  grid-area: power;
 }
-.num_4{
-    grid-area: num_4;
+.num_4 {
+  grid-area: num_4;
 }
-.num_5{
-    grid-area: num_5;
+.num_5 {
+  grid-area: num_5;
 }
-.num_6{
-    grid-area: num_6;
+.num_6 {
+  grid-area: num_6;
 }
-.minus{
-    grid-area: minus;
+.minus {
+  grid-area: minus;
 }
-.num_1{
-    grid-area: num_1;
+.num_1 {
+  grid-area: num_1;
 }
-.num_2{
-    grid-area: num_2;
+.num_2 {
+  grid-area: num_2;
 }
-.num_3{
-    grid-area: num_3;
+.num_3 {
+  grid-area: num_3;
 }
-.plus{
-    grid-area: plus;
+.plus {
+  grid-area: plus;
 }
-.reverse{
-    grid-area: reverse;
+.reverse {
+  grid-area: reverse;
 }
-.plus_minus{
-    grid-area: plus_minus;
-    font-size:25px ;
+.plus_minus {
+  grid-area: plus_minus;
+  font-size: 25px;
 }
-.num_0{
-    grid-area: num_0;
+.num_0 {
+  grid-area: num_0;
 }
-.dot{
-   
-    font-size:30px ;
-    grid-area: dot;
+.dot {
+  font-size: 30px;
+  grid-area: dot;
 }
-.equal{
-    font-size:30px ;
-    grid-area: equal;
-    background-color:#75b2e4 ;
+.equal {
+  font-size: 30px;
+  grid-area: equal;
+  background-color: #75b2e4;
 }
-.equal:hover{
-    background-color:#0078d7 !important ;
+.equal:hover {
+  background-color: #0078d7 !important ;
 }
-.right_side{
-    height: 100%;
-    grid-area:right_side ;
-   
-
+.right_side {
+  height: 100%;
+  grid-area: right_side;
 }
-.right_side li{
-    font-weight: bolder;
-    display: inline;
-    margin-right: 25px;
-    list-style-type: none;
-  
-    
+.right_side li {
+  font-weight: bolder;
+  display: inline;
+  margin-right: 25px;
+  list-style-type: none;
 }
-.right_side li a{
-    text-decoration: none;
-    color: black;
-
+.right_side li a {
+  text-decoration: none;
+  color: black;
 }
-.text_history{
-    margin-top:25px ;
+.text_history {
+  margin-top: 25px;
 }
-.historylink{
-    padding-bottom: 3px;
-    border-bottom: 4px solid #0078d7;
+.historylink {
+  padding-bottom: 3px;
+  border-bottom: 4px solid #0078d7;
 }
-.numbers div{
-    display: flex;
-     justify-content: center;
-     align-items: center;
-    
+.numbers div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .numbers div:hover {
-    background-color: LightGray ;
- }
-.numbers .color_white{
-    background-color: white ;
-    font-weight:600;
-    font-size: 25px;
+  background-color: LightGray;
+}
+.numbers .color_white {
+  background-color: white;
+  font-weight: 600;
+  font-size: 25px;
+}
+.numbers .color_gray {
+  background-color: #f3f3f3;
+}
+
+@media screen and (min-width: 501px) {
+  .m {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .numbers {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+      " percent CE C delete divide"
+      " radical num_7 num_8 num_9 multiplication"
+      "power num_4 num_5 num_6 minus "
+      " power3 num_1 num_2 num_3 plus"
+      " reverse plus_minus num_0 dot equal";
+  }
+
+  .power3 img {
+    height: 100%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .power3 img {
+    display: none !important;
+  }
+  .division {
+    grid-template-columns: 78vw 22vw;
+  }
+}
+@media screen and (max-width: 450px) {
+  .radical img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .division {
+    grid-template-columns: 100%;
+  }
+  .right_side {
+    display: none;
+  }
+  #input {
     
- }
- .numbers .color_gray{
-    background-color:#f3f3f3 ;
- }
- @media  screen and (max-width:500px) {
-     .division{
-         grid-template-columns: 100%;
-     }
-     .right_side{
-         display: none;
-     }
-     #input{
-         font-size: 60px !important;
-     }
-     .second_row div{
-         width: 100%;
-     }
-     
- }
-
- @media screen and (min-width:501px){
-     .history{
-         display: none !important;
-     }
-     .m{
-         display: none !important;
-     }
- }
- @media screen and (min-width:1024px) {
-     .numbers{
-         grid-template-columns: repeat(5,1fr);
-         grid-template-rows: repeat(5,1fr);
-         grid-template-areas: 
-         " percent CE C delete divide"
-        " radical num_7 num_8 num_9 multiplication"
-        "power num_4 num_5 num_6 minus "
-        " power3 num_1 num_2 num_3 plus"
-        " reverse plus_minus num_0 dot equal";
-     }
-
-     
- }
- @media screen and (max-width:1023px) {
-    .power3 img{
-        display: none !important;
-    }
-     
- }
+    font-size: 50px !important;
+  }
+  .second_row div {
+    width: 100%;
+  }
+  .history {
+    display: block;
+  }
+}
+@media screen and (min-width:751px) {
+  .history{
+    display: none;
+  }
+  
+}
