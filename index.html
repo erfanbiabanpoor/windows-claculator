@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Windows Calculator</title>
-        <link rel="stylesheet" href="styel.css" />
+        <link rel="stylesheet" href="style.css" />
 
     </head>
     <body>
@@ -37,7 +37,7 @@
                     <div class="M+ mhover">M+</div>
                     <div class="M- mhover">M-</div>
                     <div class="MS mhover">MS</div>
-                    <div><button class="m" disabled>M<sup><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABmJLR0QA/wD/AP+gvaeTAAAAbUlEQVQYlaWOMQqFMBBEn5JN9ZscaW9gLR7OA9j9yioX2DbXSGUhZAubzycg2DgwzTyYGXirASDn/AkhSA/cvanqMQKIyArU3r+MESClNAPfrmBvrS3/CYBSSqy1bkB090lVz9shMxMzkxt40gUoAiI1vvmaBwAAAABJRU5ErkJggg=="></sup></button></div>
+                    <div class=""><button class="m" disabled>M<sup><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABmJLR0QA/wD/AP+gvaeTAAAAbUlEQVQYlaWOMQqFMBBEn5JN9ZscaW9gLR7OA9j9yioX2DbXSGUhZAubzycg2DgwzTyYGXirASDn/AkhSA/cvanqMQKIyArU3r+MESClNAPfrmBvrS3/CYBSSqy1bkB090lVz9shMxMzkxt40gUoAiI1vvmaBwAAAABJRU5ErkJggg=="></sup></button></div>
             </div>
             <!-- numbers and operations-->
             <div class="numbers">
@@ -61,10 +61,11 @@
                 <div class="num_3 color_white">3</div>
                 <div class="plus color_gray"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABmJLR0QA/wD/AP+gvaeTAAAAV0lEQVRIiWNgGAWjgE6gE4pJBixkWshGpj4GJnI1jlo4aiHdACMO8U4G/EnfHkofxKPmFwMDQzm6IN19SC7oh2KSwfBPNKMWDn0Lya0Pf1HVFaNgFOADAFLEBlSCGNznAAAAAElFTkSuQmCC" /></div>
                 <div class="reverse color_gray ">1/x</div>
-                <div class="plus_minus color_white">±</div>
+                <div class="plus_minus color_gray">±</div>
                 <div class="num_0 color_white">0</div>
-                <div class="dot color_white">.</div>
+                <div class="dot color_gray">.</div>
                 <div class="equal">=</div>
+                <div class="power3 color_gray"><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABFCAYAAAC1+eO9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTEyLTE2VDAwOjQ5OjU5KzAzOjMwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0xMi0xNlQwMDo1MzowOSswMzozMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0xMi0xNlQwMDo1MzowOSswMzozMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpkYjYwMjk2YS1jZTQ1LWRm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' width="100px" height="100px"> </div>
             </div>
             <div class= "right_side">
                 <ul>

@@ -4,13 +4,12 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-html {
+html,body {
     height: 100%;
     }
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
     background-color: rgb(235, 235, 235);
 
 }
@@ -18,8 +17,8 @@ body {
 .division{
     height: 100%;
     display: grid;
-    grid-template-columns: 3fr 20vw;
-    grid-template-rows: 33px   1fr 7vh 3fr ;
+    grid-template-columns:  80vw 20vw;
+    grid-template-rows: 30px   minmax(100,1fr)  7vh  minmax(200px,3fr)  ;
     grid-template-areas: 
     "head       head"
     "first_row  right_side"
@@ -28,7 +27,7 @@ body {
     
 }
 .head{
-    height: 100%;
+    
     grid-area: head;
     display: inline;
  
@@ -61,20 +60,25 @@ body {
 }
 
 .first_row{
-    /*position: relative;*/
+   
+    position: relative;
     height: 100%;
     grid-area: first_row ;
     
    
 }
-/*.first_row history_btn{
+.first_row .history_btn{
     position: absolute;
-    top: 0;
-    right: 0;
-}*/
+    top: 15px;
+    right: 15px;
+    
+}
+.first_row .history{
+    border: none;
+}
 .first_row .left_row{
     display: flex;
-    flex:row nowrap;
+    
     padding: 10px;
     
 
@@ -112,8 +116,7 @@ body {
     
    
     display: flex;
-    width: 100%; 
-    height: 100%;
+   
     
     
 }
@@ -137,9 +140,8 @@ body {
     background-color:lightgray !important;
 }
 .numbers {
-   
-    display: grid;
     height: 100%;
+    display: grid;
     grid-area: numbers ;
     gap: 2px;
    
@@ -216,14 +218,18 @@ body {
 }
 .plus_minus{
     grid-area: plus_minus;
+    font-size:25px ;
 }
 .num_0{
     grid-area: num_0;
 }
 .dot{
+   
+    font-size:30px ;
     grid-area: dot;
 }
 .equal{
+    font-size:30px ;
     grid-area: equal;
     background-color:#75b2e4 ;
 }
@@ -274,11 +280,47 @@ body {
  .numbers .color_gray{
     background-color:#f3f3f3 ;
  }
- @media screen and (min-width:500px){
+ @media  screen and (max-width:500px) {
+     .division{
+         grid-template-columns: 100%;
+     }
+     .right_side{
+         display: none;
+     }
+     #input{
+         font-size: 60px !important;
+     }
+     .second_row div{
+         width: 100%;
+     }
+     
+ }
+
+ @media screen and (min-width:501px){
      .history{
          display: none !important;
      }
      .m{
          display: none !important;
      }
+ }
+ @media screen and (min-width:1024px) {
+     .numbers{
+         grid-template-columns: repeat(5,1fr);
+         grid-template-rows: repeat(5,1fr);
+         grid-template-areas: 
+         " percent CE C delete divide"
+        " radical num_7 num_8 num_9 multiplication"
+        "power num_4 num_5 num_6 minus "
+        " power3 num_1 num_2 num_3 plus"
+        " reverse plus_minus num_0 dot equal";
+     }
+
+     
+ }
+ @media screen and (max-width:1023px) {
+    .power3 img{
+        display: none !important;
+    }
+     
  }
