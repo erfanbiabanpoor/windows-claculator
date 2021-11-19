@@ -85,7 +85,6 @@ body {
   background-color: lightgray;
 }
 #input {
- 
   color: inherit;
   cursor: text;
   font-weight: 600;
@@ -130,7 +129,7 @@ ul {
   display: grid;
   grid-area: numbers;
   gap: 2px;
-/* define all oprations with grid */
+  /* define all oprations with grid */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
@@ -300,7 +299,6 @@ ul {
     display: none;
   }
   #input {
-    
     font-size: 50px !important;
   }
   .second_row div {
@@ -310,8 +308,8 @@ ul {
     display: block;
   }
 }
-@media screen and (min-width:751px) {
-  .history{
+@media screen and (min-width: 751px) {
+  .history {
     display: none;
   }
 }
