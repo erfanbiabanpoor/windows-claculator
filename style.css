@@ -56,6 +56,9 @@ body {
   position: relative;
   height: 100%;
   grid-area: first_row;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .first_row .history_btn {
   position: absolute;
@@ -84,18 +87,35 @@ body {
 .hoover:hover {
   background-color: lightgray;
 }
-#input {
+.both_input {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+input {
   color: inherit;
   cursor: text;
   font-weight: 600;
   color: black;
-  font-size: 70px;
+  background-color: rgb(235, 235, 235);
+  font-size: 50px;
   margin-right: 20px;
   float: right;
   border: none;
   text-decoration: rtl;
   direction: rtl;
 }
+input:focus {
+  outline: none;
+}
+#input {
+  font-size: 20px;
+}
+
+.input-3 {
+  font-size: 20px;
+}
+
 .second_row {
   grid-area: second_row;
   font-size: small;
@@ -299,7 +319,7 @@ ul {
     display: none;
   }
   #input {
-    font-size: 50px !important;
+    font-size: 20px !important;
   }
   .second_row div {
     width: 100%;
