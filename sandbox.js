@@ -23,24 +23,25 @@ numbersEl.forEach((number) => {
     display2El.innerText = dis2Num;
   });
 });
-
+// debugger
 operationEl.forEach((operation) => {
   operation.addEventListener("click", (e) => {
+    // debugger;
     if (!dis2Num) return;
     haveDot = false;
     const operationName = e.target.innerText;
+    lastOperation = operationName;
+
     if (dis1Num && dis2Num && lastOperation) {
       mathOperation();
     } else {
       result = parseFloat(dis2Num);
     }
     clearVar(operationName);
-    lastOperation = operationName;
-    console.log(result);
   });
 });
 function clearVar(name = "") {
-  dis1Num += dis2Num + " " + name + " ";
+  dis1Num += name + " " + dis2Num + " ";
   display1El.innerText = dis1Num;
   display2El.innerText = "";
   dis2Num = "";
@@ -48,23 +49,28 @@ function clearVar(name = "") {
 }
 
 function mathOperation() {
-  if (lastOperation === "x") {
+  if (lastOperation === "×") {
+    // debugger;
     result = parseFloat(result) * parseFloat(dis2Num);
   } else if (lastOperation === "+") {
     result = parseFloat(result) + parseFloat(dis2Num);
   } else if (lastOperation === "-") {
     result = parseFloat(result) - parseFloat(dis2Num);
-  } else if (lastOperation === "/") {
+  } else if (lastOperation === "÷") {
     result = parseFloat(result) / parseFloat(dis2Num);
   } else if (lastOperation === "%") {
     result = parseFloat(result) % parseFloat(dis2Num);
+  } else if (lastOperation === "√") {
+    result = Math.sqrt(parseFloat(dis2Num));
+  } else if (lastOperation === "X^2") {
+    result = Math.pow(dis2Num, 2);
   }
 }
-// operation();
 
 equalEl.addEventListener("click", () => {
   if (!dis2Num || !dis1Num) return;
   haveDot = false;
+  debugger;
   mathOperation();
   clearVar();
   display2El.innerText = result;
