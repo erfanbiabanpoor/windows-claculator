@@ -63,7 +63,11 @@ function mathOperation() {
   } else if (lastOperation === "√") {
     result = Math.sqrt(parseFloat(dis2Num));
   } else if (lastOperation === "X^2") {
-    result = Math.pow(dis2Num, 2);
+    result = Math.pow(result, 2);
+  } else if (lastOperation === "1/x") {
+    result = 1 / parseFloat(dis1Num);
+  } else if (lastOperation === "X^3") {
+    result = Math.pow(dis1Num, 3);
   }
 }
 
