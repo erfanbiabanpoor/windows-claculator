@@ -103,17 +103,27 @@ body {
   text-decoration: rtl;
   direction: rtl;
 }
-/* .both-input {
-} */
+.currentInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: inherit;
+  cursor: text;
+  font-weight: 600;
+  color: black;
+  background-color: rgb(235, 235, 235);
+  font-size: 50px;
+  margin-right: 20px;
+  float: right;
+  border: none;
+  text-decoration: rtl;
+  direction: rtl;
+}
 .both-input:focus {
   outline: none;
 }
-#input {
-  font-size: 20px;
-}
-
-.input-3 {
-  font-size: 20px;
+.currentInput {
+  font-size: 40px;
 }
 
 .second_row {
@@ -149,7 +159,7 @@ ul {
   display: grid;
   grid-area: numbers;
   gap: 2px;
-  /* define all oprations with grid */
+  /* define all operations with grid */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
@@ -299,7 +309,7 @@ ul {
   }
 }
 @media screen and (max-width: 1023px) {
-  .power3 img {
+  .power3 {
     display: none !important;
   }
   .division {
@@ -318,7 +328,7 @@ ul {
   .right_side {
     display: none;
   }
-  #input {
+  .currentInput {
     font-size: 20px !important;
   }
   .second_row div {

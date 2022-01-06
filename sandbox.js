@@ -1,139 +1,161 @@
-const display1El = document.querySelector(".input-3");
-const display2El = document.getElementById("input");
-const tempResultEl = document.querySelector(".input");
-const numbersEl = document.querySelectorAll(".number");
-const operationEl = document.querySelectorAll(".operation");
-const equalEl = document.querySelector(".equal");
-const clearAllEl = document.querySelector(".clear-all");
-const clearLastEl = document.querySelector(".last-clear");
-let dis1Num = "";
-let dis2Num = "";
-let result = null;
-let lastOperation = "";
-let haveDot = false;
+const initApp = () => {
+  const currentValueElem = document.querySelector(".currentInput");
+  const previousValueElem = document.querySelector(".previousInput");
+  let itemArray = [];
+  let equationArray = [];
+  let newNumberFlag = false;
 
-numbersEl.forEach((number) => {
-  number.addEventListener("click", (e) => {
-    if (e.target.innerText === "." && !haveDot) {
-      haveDot = true;
-    } else if (e.target.innerText === "." && haveDot) {
-      return;
-    }
-    dis2Num += e.target.innerText;
-    display2El.innerText = dis2Num;
+  const inputButtons = document.querySelectorAll(".number");
+  inputButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const newInput = event.target.textContent;
+      if (newNumberFlag) {
+        currentValueElem.value = newInput === "." ? "0." : newInput;
+        newNumberFlag = false;
+      } else if (currentValueElem.value.includes(".") && newInput === ".") {
+        return;
+      } else {
+        currentValueElem.value =
+          currentValueElem.value == 0 &&
+          currentValueElem.value.length == 1 &&
+          newInput !== "."
+            ? newInput
+            : `${currentValueElem.value}${newInput}`;
+      }
+    });
   });
-});
-// debugger
-operationEl.forEach((operation) => {
-  operation.addEventListener("click", (e) => {
-    // debugger;
-    if (!dis2Num) return;
-    haveDot = false;
-    const operationName = e.target.innerText;
-    lastOperation = operationName;
 
-    if (dis1Num && dis2Num && lastOperation) {
-      mathOperation();
+  const opButtons = document.querySelectorAll(".operation");
+  opButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      // equal sign showing
+      if (newNumberFlag) {
+        previousValueElem.textContent = "";
+        itemArray = [];
+      }
+
+      const newOperator = event.target.textContent;
+      let currentVal = parseFloat(currentValueElem.value);
+      if (isNaN(currentVal)) currentVal = 0;
+
+      // begin new equation
+      if (!itemArray.length) {
+        itemArray.push(currentVal, newOperator);
+        previousValueElem.textContent = `${currentVal} 
+                     ${newOperator}`;
+        return (newNumberFlag = true);
+      }
+
+      // complete equation
+      if (itemArray.length) {
+        itemArray.push(currentVal); // 3rd elem
+
+        const equationObj = {
+          num1: parseFloat(itemArray[0]),
+          num2: parseFloat(currentVal),
+          op: itemArray[1],
+        };
+
+        equationArray.push(equationObj);
+        const equationString = `${equationObj["num1"]} ${equationObj["op"]} ${equationObj["num2"]}`;
+
+        if (divByZero(equationString)) {
+          equationArray.pop();
+          currentValueElem.value = "/0=🤯";
+          // start new equation
+          itemArray = [0, newOperator];
+        } else {
+          const newValue = calculate(equationString);
+          previousValueElem.textContent = `${newValue} ${newOperator}`;
+          // start new equation
+          itemArray = [newValue, newOperator];
+        }
+
+        newNumberFlag = true;
+        console.log(equationArray);
+      }
+    });
+  });
+
+  const equalsButton = document.querySelector(".equal");
+  equalsButton.addEventListener("click", () => {
+    const currentVal = currentValueElem.value;
+    let equationObj;
+
+    //pressing equals repeatedly
+    if (!itemArray.length && equationArray.length) {
+      const lastEquation = equationArray[equationArray.length - 1];
+      equationObj = {
+        num1: parseFloat(currentVal),
+        num2: lastEquation.num2,
+        op: lastEquation.op,
+      };
+    } else if (!itemArray.length) {
+      return currentVal;
     } else {
-      result = parseFloat(dis2Num);
+      itemArray.push(currentVal);
+      equationObj = {
+        num1: parseFloat(itemArray[0]),
+        num2: parseFloat(currentVal),
+        op: itemArray[1],
+      };
     }
-    clearVar(operationName);
-  });
-});
-function clearVar(name = "") {
-  dis1Num += name + " " + dis2Num + " ";
-  display1El.innerText = dis1Num;
-  display2El.innerText = "";
-  dis2Num = "";
-  tempResultEl.innerText = result;
-}
 
-function mathOperation() {
-  if (lastOperation === "×") {
-    // debugger;
-    result = parseFloat(result) * parseFloat(dis2Num);
-  } else if (lastOperation === "+") {
-    result = parseFloat(result) + parseFloat(dis2Num);
-  } else if (lastOperation === "-") {
-    result = parseFloat(result) - parseFloat(dis2Num);
-  } else if (lastOperation === "÷") {
-    result = parseFloat(result) / parseFloat(dis2Num);
-  } else if (lastOperation === "%") {
-    result = parseFloat(result) % parseFloat(dis2Num);
-  } else if (lastOperation === "√") {
-    result = Math.sqrt(parseFloat(dis2Num));
-  } else if (lastOperation === "X^2") {
-    result = Math.pow(result, 2);
-  } else if (lastOperation === "1/x") {
-    result = 1 / parseFloat(dis1Num);
-  } else if (lastOperation === "X^3") {
-    result = Math.pow(dis1Num, 3);
-  }
-}
+    equationArray.push(equationObj);
 
-equalEl.addEventListener("click", () => {
-  if (!dis2Num || !dis1Num) return;
-  haveDot = false;
-  debugger;
-  mathOperation();
-  clearVar();
-  display2El.innerText = result;
-  tempResultEl.innerText = "";
-  dis2Num = result;
-  dis1Num = "";
-});
+    const equationString = `${equationObj["num1"]} ${equationObj["op"]} ${equationObj["num2"]}`;
+    const equationStringForShow = `${equationObj["num2"]} ${equationObj["op"]} ${equationObj["num1"]}`;
 
-clearAllEl.addEventListener("click", () => {
-  dis1Num = "";
-  dis2Num = "";
-  display1El.innerText = "";
-  display2El.innerText = "";
-  result = "";
-  tempResultEl.innerText = "";
-});
+    previousValueElem.textContent = `= ${equationStringForShow}`;
 
-clearLastEl.addEventListener("click", () => {
-  display2El.innerText = "";
-  dis2Num = "";
-});
-
-window.addEventListener("keydown", (e) => {
-  if (
-    e.key === "0" ||
-    e.key === "1" ||
-    e.key === "2" ||
-    e.key === "3" ||
-    e.key === "4" ||
-    e.key === "5" ||
-    e.key === "6" ||
-    e.key === "7" ||
-    e.key === "8" ||
-    e.key === "9" ||
-    e.key === "."
-  ) {
-    clickButtonEl(e.key);
-  } else if (e.key === "+" || e.key === "-" || e.key === "/" || e.key === "%") {
-    clickOperation(e.key);
-  } else if (e.key === "*") {
-    clickOperation("x");
-  } else if (e.key == "Enter" || e.key === "=") {
-    clickEqual();
-  }
-});
-function clickButtonEl(key) {
-  numbersEl.forEach((button) => {
-    if (button.innerText === key) {
-      button.click();
+    if (divByZero(equationString)) {
+      equationArray.pop();
+      currentValueElem.value = "/0=🤯";
+    } else {
+      currentValueElem.value = calculate(equationString);
     }
+
+    newNumberFlag = true;
+    itemArray = [];
+    console.log(equationArray);
   });
-}
-function clickOperation(key) {
-  operationEl.forEach((operation) => {
-    if (operation.innerText === key) {
-      operation.click();
-    }
+
+  const clearButtons = document.querySelectorAll(".last-clear, .clear-all");
+  clearButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      currentValueElem.value = 0;
+      previousValueElem.textContent = "";
+      if (event.target.classList.contains(".last-clear")) {
+        itemArray = [];
+        equationArray = [];
+      }
+    });
   });
-}
-function clickEqual() {
-  equalEl.click();
-}
+
+  const deleteButton = document.querySelector(".delete");
+  deleteButton.addEventListener("click", () => {
+    currentValueElem.value = currentValueElem.value.slice(0, -1);
+    if (!currentValueElem.value.length) currentValueElem.value = 0;
+  });
+
+  const signChangeButton = document.querySelector(".plus_minus");
+  signChangeButton.addEventListener("click", () => {
+    currentValueElem.value = parseFloat(currentValueElem.value) * -1;
+  });
+};
+
+document.addEventListener("DOMContentLoaded", initApp);
+
+const divByZero = (equation) => {
+  return /(\/ 0$)/.test(equation);
+};
+
+const calculate = (equation, currentValueElem) => {
+  const regex = /(^[*/=])|(\s)/g;
+  equation = equation.replace(regex, "");
+  const divByZero = /(\/ 0$)/.test(equation);
+  console.log(divByZero);
+  if (divByZero) return (currentValueElem.value = 0);
+  return (currentValueElem.value = eval(equation));
+  return eval(equation);
+};
