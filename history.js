@@ -5,7 +5,7 @@ const historyItem = document.querySelector('.items');
 const memoryButton = document.querySelector('.memory-link');
 const historyMain = document.querySelector('.history-section');
 const memoryMain = document.querySelector('.memory-section');
-const trashHistory = document.querySelector('.claer-history');
+const trashHistory = document.querySelector('.clear-history');
 
 export const showHistory = (historyButton) => {
     
@@ -44,11 +44,11 @@ export const displayHistory = (dataBaseLength) => {
              else {
                 itemUpperInput.textContent = `${numberInfo.numberOne} ${numberInfo.operator} ${numberInfo.numberTwo} = `;
             }
-            itemInput.textContent = `${numberInfo.resualt}`;
+            itemInput.textContent = `${numberInfo.result}`;
         }
     }
     aside.addEventListener('click', event => {
-        if(event.target.classList.contains('claer-history')) clearHistory();
+        if(event.target.classList.contains('clear-history')) clearHistory();
     })
 
 }

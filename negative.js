@@ -4,10 +4,10 @@ export const convertNumber = (dataBaseLength) => {
     for(let numberInfo of dataBase) {
         if (numberInfo.id == dataBaseLength) {
             if (numberInfo.equalStatus) {
-                if (numberInfo.resualt > 0) {
-                    numberInfo.resualt = String(Math.abs(numberInfo.resualt) * -1);
-                } else if (numberInfo.resualt < 0) {
-                    numberInfo.resualt = String(Math.abs(numberInfo.resualt));
+                if (numberInfo.result > 0) {
+                    numberInfo.result = String(Math.abs(numberInfo.result) * -1);
+                } else if (numberInfo.result < 0) {
+                    numberInfo.result = String(Math.abs(numberInfo.result));
                 }
             } else {
                 if (numberInfo.waitingForOperator) {

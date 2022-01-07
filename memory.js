@@ -6,7 +6,7 @@ const asidePm = document.getElementsByClassName('pm')[0];
 const historyButton = document.querySelector('.history-link');
 const memoryMain = document.querySelector('.memory-section');
 const historyMain = document.querySelector('.history-section');
-const clearHistory = document.querySelector('.claer-history');
+const clearHistory = document.querySelector('.clear-history');
 
 const memoryPush = () => {
     let memoryObj = {
@@ -125,10 +125,10 @@ const memoryClear = () => {
 
 const memorySmallShow = () => {
     document.getElementById("myDropdown").classList.toggle("show-memory");
-    let dropdowns = document.getElementsByClassName("dropdown-content")[0];
+    let dropdown = document.getElementsByClassName("dropdown-content")[0];
 
-    for (let i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
+    for (let i = 0; i < dropdown.length; i++) {
+      let openDropdown = dropdown[i];
       if (openDropdown.classList.contains('show-memory')) {
         openDropdown.classList.remove('show-memory');
       }
